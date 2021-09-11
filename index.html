@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dice d20</title>
+    <style type="text/css">@import "dice.css";</style>
+</head>
+<body style="margin: 0">
+    <div id="info_div" style="display: none">
+        <div class="center_field">
+            <span id="label"></span>
+        </div>
+    </div>
+    <div id="selector_div" style="display: none">
+        <div class="center_field">
+            <input type="text" id="set" value="d20"></input><br/>
+            <button style="margin-left: 0" id="throw">Play</button>
+        </div>
+    </div>
+    <div id="canvas"></div>
+
+    <script src="three.min.js"></script>
+    <script src="cannon.min.js"></script>
+    <script type="text/javascript" src="teal.js"></script>
+    <script type="text/javascript" src="dice.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" defer="defer">
+        dice_initialize(document.body);
+    </script>
+</body>
+</html>
