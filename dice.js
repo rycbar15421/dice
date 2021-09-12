@@ -547,7 +547,7 @@
         this.last_time = 0;
         this.__animate(this.running);
     }
-/*
+
     this.dice_box.prototype.__selector_animate = function(threadid) {
         var time = (new Date()).getTime();
         var time_diff = (time - this.last_time) / 1000;
@@ -567,7 +567,7 @@
             })(this, threadid);
         }
     }
-*//*
+
     this.dice_box.prototype.search_dice_by_mouse = function(ev) {
         var m = $t.get_mouse_coords(ev);
         var intersects = (new THREE.Raycaster(this.camera.position, 
@@ -576,7 +576,7 @@
                     .sub(this.camera.position).normalize())).intersectObjects(this.dices);
         if (intersects.length) return intersects[0].object.userData;
     }
-*/
+
     this.dice_box.prototype.draw_selector = function() {
         this.clear();
         var step = this.w / 4.5;
