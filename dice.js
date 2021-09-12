@@ -234,21 +234,6 @@
         return ret;
     }
 
-    this.stringify_notation = function(nn) {
-        var dict = {}, notation = '';
-        for (var i in nn.set) 
-            if (!dict[nn.set[i]]) dict[nn.set[i]] = 1; else ++dict[nn.set[i]];
-        for (var i in dict) {
-            if (notation.length) notation += ' + ';
-            notation += (dict[i] > 1 ? dict[i] : '') + i;
-        }
-        if (nn.constant) {
-            if (nn.constant > 0) notation += ' + ' + nn.constant;
-            else notation += ' - ' + Math.abs(nn.constant);
-        }
-        return notation;
-    }
-
     var that = this;
 
     this.dice_box = function(container, dimentions) {
@@ -263,7 +248,7 @@
             ? new THREE.WebGLRenderer({ antialias: true })
             : new THREE.CanvasRenderer({ antialias: true });
         container.appendChild(this.renderer.domElement);
-        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.enabled = false;
         this.renderer.shadowMap.type = THREE.PCFShadowMap;
         this.renderer.setClearColor(0xffffff, 1);
 
@@ -318,15 +303,11 @@
         this.cw = container.clientWidth;
         this.ch = container.clientHeight;
         if (dimentions) {
-            this.w = dimentions.w;
-            this.h = dimentions.h;
-        }
-        else {
             this.w = this.cw;
             this.h = this.ch;
         }
         this.aspect = Math.min(this.cw / this.w, this.ch / this.h);
-        that.scale = Math.sqrt(this.w * this.w + this.h * this.h) / 13;
+        that.scale = Math.sqrt(this.w * this.w + this.h * this.h) / 10;
 
         this.renderer.setSize(this.cw, this.ch);
 
@@ -350,13 +331,13 @@
         this.light.shadowMapWidth = 1024;
         this.light.shadowMapHeight = 1024;
         this.scene.add(this.light);
-
+/*
         if (this.desk) this.scene.remove(this.desk);
         this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1), 
                 new THREE.MeshPhongMaterial({ color: that.desk_color }));
         this.desk.receiveShadow = that.use_shadows;
         this.scene.add(this.desk);
-
+*/
         this.renderer.render(this.scene, this.camera);
     }
 
@@ -566,7 +547,7 @@
         this.last_time = 0;
         this.__animate(this.running);
     }
-
+/*
     this.dice_box.prototype.__selector_animate = function(threadid) {
         var time = (new Date()).getTime();
         var time_diff = (time - this.last_time) / 1000;
@@ -586,7 +567,7 @@
             })(this, threadid);
         }
     }
-
+*//*
     this.dice_box.prototype.search_dice_by_mouse = function(ev) {
         var m = $t.get_mouse_coords(ev);
         var intersects = (new THREE.Raycaster(this.camera.position, 
@@ -595,7 +576,7 @@
                     .sub(this.camera.position).normalize())).intersectObjects(this.dices);
         if (intersects.length) return intersects[0].object.userData;
     }
-
+*/
     this.dice_box.prototype.draw_selector = function() {
         this.clear();
         var step = this.w / 4.5;
@@ -609,7 +590,7 @@
 
         for (var i = 0, pos = -3; i < that.known_types.length; ++i, ++pos) {
             var dice = $t.dice['create_' + that.known_types[i]]();
-            dice.position.set(pos * step, 0, step * 0.5);
+            dice.position.set(0, 0, step * 0.5);
             dice.castShadow = true;
             dice.userData = that.known_types[i];
             this.dices.push(dice); this.scene.add(dice);

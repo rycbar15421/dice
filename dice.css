@@ -1,4 +1,3 @@
-
 .center_field {
     position: absolute;
     text-align: center;
@@ -14,7 +13,7 @@
 }
 
 #label {
-    font-size: 32pt;
+    font-size: 132pt;
     word-spacing: 0.5em;
     padding: 5px 15px;
     color: rgba(21, 26, 26, 0.6);
@@ -23,7 +22,7 @@
 
 #set {
     text-align: center;
-    font-size: 26pt;
+    font-size: 0pt;
     border: none;
     color: rgba(0, 0, 0, 0.8);
     background-color: rgba(255, 255, 255, 0);
@@ -41,6 +40,6 @@
 }
 
 .dice_place {
-    position: absolute;
+    position: center;
     border: solid black 1px;
 }
