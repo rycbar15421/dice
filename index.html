@@ -15,9 +15,11 @@
         <div class="center_field">
             <input type="text" id="set" value="d20"></input><br/>
             <button style="margin-left: 0" id="throw">Play</button>
+            <button style="display: none" onclick="TelegramGameProxy.shareScore()">Share score</button>
         </div>
     </div>
     <div id="canvas"></div>
+    <script src="https://telegram.org/js/games.js"></script>
     <script src="three.min.js"></script>
     <script src="cannon.min.js"></script>
     <script type="text/javascript" src="teal.js"></script>
