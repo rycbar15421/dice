@@ -248,7 +248,7 @@
             ? new THREE.WebGLRenderer({ antialias: true })
             : new THREE.CanvasRenderer({ antialias: true });
         container.appendChild(this.renderer.domElement);
-        this.renderer.shadowMap.enabled = false;
+        this.renderer.shadowMap.enabled = true;
         this.renderer.shadowMap.type = THREE.PCFShadowMap;
         this.renderer.setClearColor(0xffffff, 1);
 
@@ -331,13 +331,13 @@
         this.light.shadowMapWidth = 1024;
         this.light.shadowMapHeight = 1024;
         this.scene.add(this.light);
-/*
+
         if (this.desk) this.scene.remove(this.desk);
         this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1), 
                 new THREE.MeshPhongMaterial({ color: that.desk_color }));
         this.desk.receiveShadow = that.use_shadows;
         this.scene.add(this.desk);
-*/
+
         this.renderer.render(this.scene, this.camera);
     }
 
